@@ -23,8 +23,6 @@ Rs=0;
 DR=0;
 #%%
 def Load_Data( Data_mode, Data_Set, ix ):
-    DIR = os.getenv("HOME")+'/Public/Dataset/CRCNS.org/Visual Cortex/pvc1/crcns-ringach-data/neurodata/';
-
     File_Lists=[];
     for dr in sorted([d for d in glob.glob( DIR+'*') if os.path.isdir(d)]):
         try:
@@ -112,10 +110,6 @@ def Load_Data( Data_mode, Data_Set, ix ):
     return data, properties;
 
 def Unit_Gen(Data_Set, iCs):
-    Dist = distro.linux_distribution()[0];
-    if(Dist.lower()   == 'ubuntu' and Data_Set=='pvc1'):      DIR = os.getenv("HOME")+'/Public/Dataset/CRCNS.org/Visual Cortex/pvc1/crcns-ringach-data/neurodata/';
-    elif(Dist.lower() == 'debian' and Data_Set=='pvc1'):      DIR = "/media/Shared Volume/0. Data/2. Data Set/CRCNS.org/Visual Cortex/pvc1/crcns-ringach-data/neurodata/";
-
     FILE = DIR+'SUAs (%s)'%Data_Set;
     with open(FILE+'.dat', "rb") as f:    SUAs= pickle.load(f); 
 
@@ -135,10 +129,6 @@ def Unit_Gen(Data_Set, iCs):
 
 #generate normal clusters
 def Data_Gen(Data_Set, C_Nos):
-    Dist = distro.linux_distribution()[0];
-    if(Dist.lower()   == 'ubuntu' and Data_Set=='pvc1'):      DIR = os.getenv("HOME")+'/Public/Dataset/CRCNS.org/Visual Cortex/pvc1/crcns-ringach-data/neurodata/';
-    elif(Dist.lower() == 'debian' and Data_Set=='pvc1'):      DIR = "/media/Shared Volume/0. Data/2. Data Set/CRCNS.org/Visual Cortex/pvc1/crcns-ringach-data/neurodata/";
-
     FILE = DIR+'SUAs (%s)'%Data_Set;
     with open(FILE+'.dat', "rb") as f:    SUAs= pickle.load(f);
 
