@@ -24,7 +24,7 @@ DR=0;
 #%%
 def Load_Data( Data_mode, Data_Set, ix ):
     File_Lists=[];
-    for dr in sorted([d for d in glob.glob( DIR+'*') if os.path.isdir(d)]):
+    for dr in sorted([d for d in glob.glob( Data_DIR+'*') if os.path.isdir(d)]):
         try:
             File_Lists.append( sorted(glob.glob(dr+'/'+'*.mat')));
         except Exception as e:
@@ -110,7 +110,7 @@ def Load_Data( Data_mode, Data_Set, ix ):
     return data, properties;
 
 def Unit_Gen(Data_Set, iCs):
-    FILE = DIR+'SUAs (%s)'%Data_Set;
+    FILE = Data_DIR+'SUAs (%s)'%Data_Set;
     with open(FILE+'.dat', "rb") as f:    SUAs= pickle.load(f); 
 
     U_No = len(SUAs);
@@ -129,7 +129,7 @@ def Unit_Gen(Data_Set, iCs):
 
 #generate normal clusters
 def Data_Gen(Data_Set, C_Nos):
-    FILE = DIR+'SUAs (%s)'%Data_Set;
+    FILE = Data_DIR+'SUAs (%s)'%Data_Set;
     with open(FILE+'.dat', "rb") as f:    SUAs= pickle.load(f);
 
     U_No = len(SUAs);
